@@ -4,9 +4,13 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
+import androidx.compose.material3.LocalTextStyle
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -32,32 +36,26 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun TitleText() {
     Row(
-        modifier = Modifier.absolutePadding(left=24.dp,right=24.dp).height(100.dp).fillMaxWidth().background(Color.Blue),
+        modifier = Modifier
+            .absolutePadding(left = 24.dp, right = 24.dp)
+            .height(100.dp)
+            .fillMaxWidth()
+            .background(Color.Blue),
         horizontalArrangement = Arrangement.SpaceAround,
         verticalAlignment = Alignment.CenterVertically
     ) {
+        var count = remember {
+            mutableStateOf(0)
+        }
         Text(
-            text = "Larry",
+            modifier = Modifier.clickable {
+                count.value += 1
+            },
+            text = count.value.toString(),
             color = Shadow4,
             fontSize = 20.sp,
             fontStyle = FontStyle.Italic,
             fontFamily = FontFamily.SansSerif
-        )
-        Text(
-            text = "안드로이드",
-            color = Shadow10,
-            fontSize = 20.sp,
-            fontWeight = FontWeight.Bold,
-            fontFamily = FontFamily.Serif,
-            letterSpacing = 10.sp
-        )
-        Text(
-            text = "안드로이드",
-            color = Shadow10,
-            fontSize = 20.sp,
-            fontWeight = FontWeight.Bold,
-            fontFamily = FontFamily.Serif,
-            letterSpacing = 10.sp
         )
     }
 }
