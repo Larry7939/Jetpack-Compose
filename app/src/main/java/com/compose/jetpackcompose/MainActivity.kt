@@ -3,13 +3,11 @@ package com.compose.jetpackcompose
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.CheckCircle
 import androidx.compose.material.icons.outlined.ArrowBack
+import androidx.compose.material.icons.outlined.CheckCircle
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -43,8 +41,19 @@ fun PaymentScreen() {
                         )
                     }
                 })
+        },
+        bottomBar ={
+            BottomAppBar (
+                actions = {
+                    IconButton(
+                        onClick = {}) {
+                        Icon(imageVector = Icons.Outlined.CheckCircle, contentDescription = null)
+                    }
+                }
+            )
         }
     )
+
     { paddingValues ->
         Box(modifier = Modifier
             .padding(paddingValues)
@@ -54,7 +63,7 @@ fun PaymentScreen() {
                 contentDescription = null,
                 modifier = Modifier
                     .size(100.dp)
-                    .align(Alignment.TopCenter),
+                    .align(Alignment.BottomCenter),
                 tint = Color.Blue
             )
         }
