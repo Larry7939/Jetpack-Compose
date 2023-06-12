@@ -4,66 +4,59 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.*
-import androidx.compose.material3.LocalTextStyle
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.wrapContentHeight
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.text.font.FontFamily
-import androidx.compose.ui.text.font.FontStyle
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import com.compose.jetpackcompose.ui.theme.JetpackComposeTheme
-import com.compose.jetpackcompose.ui.theme.Shadow10
-import com.compose.jetpackcompose.ui.theme.Shadow4
+import com.compose.jetpackcompose.ui.theme.Purple40
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            TitleTextPreview()
+            UserGuidePopupPreview()
         }
     }
 }
-
 @Composable
-fun TitleText() {
+fun UserGuidePopup() {
     Row(
         modifier = Modifier
-            .absolutePadding(left = 24.dp, right = 24.dp)
-            .height(100.dp)
             .fillMaxWidth()
-            .background(Color.Blue),
-        horizontalArrangement = Arrangement.SpaceAround,
-        verticalAlignment = Alignment.CenterVertically
+            .wrapContentHeight(),
+        verticalAlignment = Alignment.CenterVertically,
     ) {
-        var count = remember {
-            mutableStateOf(0)
+        Button(
+            onClick = { /*TODO*/ }, modifier = Modifier
+                .weight(1f)
+                .background(Color.White),
+            colors = ButtonDefaults.buttonColors(Purple40)
+        ) {
+
+            Text(text = "취소")
         }
-        Text(
-            modifier = Modifier.clickable {
-                count.value += 1
-            },
-            text = count.value.toString(),
-            color = Shadow4,
-            fontSize = 20.sp,
-            fontStyle = FontStyle.Italic,
-            fontFamily = FontFamily.SansSerif
-        )
+        Button(
+            onClick = { /*TODO*/ }, modifier = Modifier
+                .weight(2f)
+                .background(Color.White),
+            colors = ButtonDefaults.buttonColors(Purple40)
+        ) {
+            Text(text = "확인")
+        }
     }
 }
-
-@Preview
+@Preview("default", "round")
 @Composable
-fun TitleTextPreview() {
+fun UserGuidePopupPreview() {
     JetpackComposeTheme {
-        TitleText()
+        UserGuidePopup()
     }
 }
