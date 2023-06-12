@@ -3,65 +3,78 @@ package com.compose.jetpackcompose
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material3.Button
-import androidx.compose.material3.ButtonDefaults
-import androidx.compose.material3.Text
+import androidx.compose.foundation.layout.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.CheckCircle
+import androidx.compose.material.icons.outlined.ArrowBack
+import androidx.compose.material.icons.outlined.CheckCircle
+import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.text.font.FontFamily
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.sp
+import androidx.compose.ui.unit.dp
 import com.compose.jetpackcompose.ui.theme.JetpackComposeTheme
-import com.compose.jetpackcompose.ui.theme.Purple40
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            SignInScreenPreview()
+            PaymentScreenPreview()
         }
     }
 }
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun SignInScreen() {
-    val loginTextStyle = androidx.compose.ui.text.TextStyle(
-        fontFamily = FontFamily.Default,
-        fontWeight = FontWeight.Bold,
-        fontSize = 16.sp,
-        lineHeight = 24.sp,
-        letterSpacing = 0.5.sp,
-        color = Color.Black
+fun PaymentScreen() {
+    Scaffold(
+        topBar = {
+            TopAppBar(
+                title = { Text(text = "결제 수단 등록") },
+                navigationIcon = {
+                    IconButton(
+                        onClick = { /*TODO*/ }) {
+                        Icon(
+                            imageVector = Icons.Outlined.ArrowBack, contentDescription = null
+                        )
+                    }
+                })
+        },
+        bottomBar ={
+            BottomAppBar (
+                actions = {
+                    IconButton(
+                        onClick = {}) {
+                        Icon(imageVector = Icons.Outlined.CheckCircle, contentDescription = null)
+                    }
+                }
+            )
+        }
     )
 
-    Column(
-        verticalArrangement = Arrangement.SpaceEvenly,
-        horizontalAlignment = Alignment.CenterHorizontally,
-        modifier = Modifier
-            .fillMaxSize()
-            .background(Color.White)
-    ) {
-        Text(
-            text = "One Market",
-            style = loginTextStyle
-        )
-        Button(onClick = { /*TODO*/ }, colors = ButtonDefaults.buttonColors(Purple40)) {
-            Text(text = "로그인", style = loginTextStyle)
+    { paddingValues ->
+        Box(modifier = Modifier
+            .padding(paddingValues)
+            .fillMaxSize()) {
+            Icon(
+                imageVector = Icons.Filled.CheckCircle,
+                contentDescription = null,
+                modifier = Modifier
+                    .size(100.dp)
+                    .align(Alignment.BottomCenter),
+                tint = Color.Blue
+            )
         }
     }
 }
 
-@Preview("default", "round")
+
+@Preview
 @Composable
-fun SignInScreenPreview() {
+fun PaymentScreenPreview() {
     JetpackComposeTheme {
-        SignInScreen()
+        PaymentScreen()
     }
 }
