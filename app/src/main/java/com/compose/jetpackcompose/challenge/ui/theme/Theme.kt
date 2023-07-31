@@ -1,4 +1,6 @@
-package com.compose.jetpackcompose.ui.theme
+@file:Suppress("DEPRECATION")
+
+package com.compose.jetpackcompose.challenge.ui.theme
 
 import android.app.Activity
 import android.os.Build

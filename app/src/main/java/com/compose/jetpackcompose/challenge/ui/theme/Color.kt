@@ -1,4 +1,4 @@
-package com.compose.jetpackcompose.ui.theme
+package com.compose.jetpackcompose.challenge.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
